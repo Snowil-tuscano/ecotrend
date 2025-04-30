@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrend - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="eco.jpg" alt="EcoTrend Logo" class="logo-img">
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#" class="About">About</a>
+                <a href="#" class="Dev">Developers</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="openAbout">
+                <span class="close">X</span>
+                <div class="content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iusto maxime dolor deserunt
+                    distinctio, repellendus dicta iste soluta consectetur voluptatum sequi in ducimus odit incidunt
+                    officiis ipsam necessitatibus pariatur explicabo molestias adipisci quo. Debitis, exercitationem
+                    dolore ex non neque nemo, corporis, tempore architecto tenetur voluptatem consectetur placeat
+                    doloribus perspiciatis repellat.
+                </div>
+            </div>
+
+            <div class="openDev">
+                <span class="close1">X</span>
+                <div class="content">
+                    <div class="card">
+                        <img src="developers/Priyan.png">
+                        <div class="text">
+                            <div>Name : Priyan Almeida</div>
+                            <div>Roll no : 10460</div>
+                            <div>SE Comps A (Batch D)</div>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <img src="developers/Sherwin.jpg">
+                        <div class="text">
+                            <div>Name : Sherwin Dmonte</div>
+                            <div>Roll no : 10461</div>
+                            <div>SE Comps A (Batch D)</div>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <img src="developers/Snowil.png" alt="developers/Priyan.png">
+                        <div class="text">
+                            <div>Name : Snowil Tuscano</div>
+                            <div>Roll no : 10465</div>
+                            <div>SE Comps A (Batch D)</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <h1>Tracking Innovation & Sustainable Development (TISD) for a Better Tomorrow</h1>
+            <div class="content-row">
+                <div class="login-box">
+                    <p>Welcome back Admin! Please login to your account.</p>
+                    <form>
+                        <input type="text" placeholder="Admin name" class="user" required>
+                        <input type="password" placeholder="Password" class="pass" required>
+                        <button type="submit" class="login-btn">Log In</button>
+
+                        <div class="loginexternal">
+                            <button type="button" class="viewer-btn">Login as Viewer</button>
+                            <button type="button" class="faculty-btn">Login as Faculty</button>
+                        </div>
+                    </form>
+                </div>
+                <img src="sdg.png" alt="Sustainable Development Goals" class="sdg-image">
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = document.querySelector(".user");
+            const pass = document.querySelector(".pass");
+            const login_btn = document.querySelector(".login-btn");
+            const viewer_btn = document.querySelector(".viewer-btn");
+
+            const about = document.getElementsByClassName("About")[0];
+            const dev = document.getElementsByClassName("Dev")[0];
+
+            about.addEventListener("click", () => {
+                document.querySelector(".openAbout").style.display = "block";
+                document.querySelector(".close").addEventListener("click", () => {
+                    document.querySelector(".openAbout").style.display = "none";
+                });
+
+            });
+
+            dev.addEventListener("click", () => {
+                document.querySelector(".openDev").style.display = "block";
+                document.querySelector(".close1").addEventListener("click", () => {
+                    document.querySelector(".openDev").style.display = "none";
+                });
+
+            });
+
+            if (login_btn) {
+                login_btn.addEventListener("click", async (event) => {
+                    event.preventDefault();
+
+                    // Get the user and password values from the form
+                    const username = user.value;
+                    const password = pass.value;
+
+                    // Perform the login request to the server
+                    try {
+                        const response = await fetch("http://localhost:3000/login-admin", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ username, password }),
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            // If login is successful, redirect to the dashboard
+                            window.location.href = "adminDasboard.html";
+                        } else {
+                            // If login fails, show an error message
+                            alert(data.message || "Incorrect credentials!");
+                        }
+                    } catch (err) {
+                        console.error("Login error:", err);
+                        alert("Server error, please try again later.");
+                    }
+                });
+            } else {
+                console.error("Login button not found.");
+            }
+
+            if (viewer_btn) {
+                viewer_btn.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    window.location.href = "login.html";
+                });
+            } else {
+                console.error("Viewer button not found.");
+            }
+
+            document.querySelector(".faculty-btn").addEventListener("click", function () {
+
+                window.location.href = "facultylogin.html";
+            });
+        });
+
+    </script>
+</body>
+
+</html>

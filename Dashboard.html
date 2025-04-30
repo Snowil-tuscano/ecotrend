@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+     
+        <aside class="sidebar">
+            <div class="logo">☰</div>
+            <ul>
+                <li>📅</li>
+                <li>✂️</li>
+                <li>📊</li>
+                <li>📁</li>
+                <li>⚙️</li>
+            </ul>
+        </aside>
+
+        
+        <main class="dashboard">
+            
+
+            <h2>Hi, ABC!</h2>
+            
+            <div class="btn-container">
+                <button class="btn btn1">Add Project</button>
+                <button class="btn btn2">Remove Project</button>
+            </div>
+
+            <div class="initial">
+                <div class="graph-container">
+                    <h3>Innovation Progress Graph</h3>
+                    <canvas id="innovationGraph"></canvas>
+                </div>
+
+                <div class="metrics">
+                    <h3>Sustainable Development Metrics</h3>
+                    <div class="metric">
+                        <span>Overall Pollution Reduction</span>
+                        <div class="progress prog1" style="background: #c4b5fd;"></div>
+                    </div>
+                    <div class="metric">
+                        <span>Renewable Energy Use</span>
+                        <div class="progress prog2" style="background: #facc15;"></div>
+                    </div>
+                    <div class="metric">
+                        <span>Animal Well-being</span>
+                        <div class="progress prog3" style="background: black;"></div>
+                    </div>
+                </div>
+            </div>
+
+                <section class="cards">
+                    <div class="card">
+                        <h3>Sustainability Actions</h3>
+                        <ul class="actions-list">	
+                            
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Sustainability Impact</h3>
+                        <div class="impact-circle" id="impactPercentage"></div>
+
+                    </div>
+
+                    <div class="card">
+                        <h3>Innovation Spotlight</h3>
+                        <img class="med" src="med-removebg-preview.png" alt="Meditation">
+                    </div>
+                </section>
+        </main>
+    </div>
+
+    <script src="Dashboard.js"></script>
+</body>
+
+</html>
